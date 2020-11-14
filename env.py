@@ -1,5 +1,9 @@
 import numpy as np
 import pyglet
+import gym
+from IPython import display
+import matplotlib
+import matplotlib.pyplot as plt
 
 
 class ArmEnv(object):
@@ -68,6 +72,7 @@ class ArmEnv(object):
         if self.viewer is None:
             self.viewer = Viewer(self.arm_info, self.goal)
         self.viewer.render()
+ 
 
     def sample_action(self):
         return np.random.rand(2)-0.5    # two radians
@@ -85,28 +90,52 @@ class Viewer(pyglet.window.Window):
         self.center_coord = np.array([200, 200])
 
         self.batch = pyglet.graphics.Batch()    # display whole batch at once
+        self.background = self.batch.add(
+            4, pyglet.gl.GL_QUADS, None,    # 4 corners
+            ('v2f', [0,0,
+                     0,400,
+                     400,400,
+                     400,0]),
+            ('c3B', (250,239,219) * 4))    # color
+        self.background2 = self.batch.add(
+            4, pyglet.gl.GL_QUADS, None,    # 4 corners
+            ('v2f', [200,360,
+                     360,200,
+                     200,40,
+                     40,200]),
+            ('c3B', (238,223,204) * 4))    # color
+        self.background3 = self.batch.add(
+            4, pyglet.gl.GL_QUADS, None,    # 4 corners
+            ('v2f', [200,260,
+                     260,200,
+                     200,140,
+                     140,200]),
+            ('c3B', (238,213,183) * 4))    # color
+
         self.goal = self.batch.add(
             4, pyglet.gl.GL_QUADS, None,    # 4 corners
             ('v2f', [goal['x'] - goal['l'] / 2, goal['y'] - goal['l'] / 2,                # location
                      goal['x'] - goal['l'] / 2, goal['y'] + goal['l'] / 2,
                      goal['x'] + goal['l'] / 2, goal['y'] + goal['l'] / 2,
                      goal['x'] + goal['l'] / 2, goal['y'] - goal['l'] / 2]),
-            ('c3B', (86, 109, 249) * 4))    # color
+            ('c3B', (205,0,205) * 4))    # color
         self.arm1 = self.batch.add(
             4, pyglet.gl.GL_QUADS, None,
             ('v2f', [250, 250,                # location
                      250, 300,
                      260, 300,
                      260, 250]),
-            ('c3B', (249, 86, 86) * 4,))    # color
+            ('c3B', (255,114,86) * 4,))    # color
         self.arm2 = self.batch.add(
             4, pyglet.gl.GL_QUADS, None,
             ('v2f', [100, 150,              # location
                      100, 160,
                      200, 160,
-                     200, 150]), ('c3B', (249, 86, 86) * 4,))
+                     200, 150]), ('c3B', (238, 201, 0) * 4,))
+
 
     def render(self):
+        pyglet.clock.tick()
         self._update_arm()
         self.switch_to()
         self.dispatch_events()
