@@ -1,13 +1,12 @@
 # RL-project2
 
-2d robotic arm reinforcement learning project based on Pytorch. The environment for the entire project is based on the Mofan's tutorial plus some of our modifications.
+2d robotic arm reinforcement learning project based on Pytorch. The environment for the entire project is based on the Mofan's tutorial plus some of our modifications. We learned to use three different algorithms to train the model(DQN, DDPG, A3C), and compared the results of the algorithms
 
-## Requirements
+## Group members
 
-1. python=3.6
-2. pytorch=1.4.0
-3. pyglet==1.5.0
-4. gym=0.12（No need MuJoCo ）
+* Li Yifan--A3C
+* Li Aijia--DQN
+* Jiang Yuedong--DDPG
 
 ## Quick start
 
