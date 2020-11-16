@@ -16,13 +16,13 @@ This project contains trained models (training under CPU) under the Model direct
 
 __TEST:__
 
-修改main.py代码
+Change the code of main.py
 
 ```python
 ON_TRAIN = False
 ```
 
-运行
+Run
 
 ```bash
 python main.py
@@ -30,13 +30,13 @@ python main.py
 
 __TRAIN:__
 
-修改main.py代码
+Change the code of main.py
 
 ```python
 ON_TRAIN = True
 ```
 
-运行
+Run
 
 ```bash
 python main.py
