@@ -7,38 +7,3 @@
 * Li Yifan--A3C
 * Li Aijia--DQN
 * Jiang Yuedong--DDPG
-
-## Quick start
-
-This project contains trained models (training under CPU) under the Model directory, so you can start testing directly
-
-
-__TEST:__
-
-Change the code of main.py
-
-```python
-ON_TRAIN = False
-```
-
-Run
-
-```bash
-python main.py
-```
-
-__TRAIN:__
-
-Change the code of main.py
-
-```python
-ON_TRAIN = True
-```
-
-Run
-
-```bash
-python main.py
-```
-
-<br>
